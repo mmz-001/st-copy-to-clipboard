@@ -13,7 +13,7 @@ setuptools.setup(
     description="Streamlit component that allows you to copy text to the clipboard.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    packages=setuptools.find_packages(where="src"),
+    packages=setuptools.find_packages(where="st_copy_to_clipboard"),
     package_dir={"": "st_copy_to_clipboard"},
     include_package_data=True,
     classifiers=[],
