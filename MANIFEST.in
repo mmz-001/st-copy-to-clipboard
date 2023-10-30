@@ -1,0 +1,3 @@
+recursive-include st_copy_to_clipboard/frontend *
+include README.md
+include LICENSE

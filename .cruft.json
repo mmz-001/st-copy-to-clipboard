@@ -1,0 +1,20 @@
+{
+  "template": "https://github.com/blackary/cookiecutter-streamlit-component/",
+  "commit": "c972054b7b0890a1aa1c02e792bedc71c525ea87",
+  "checkout": null,
+  "context": {
+    "cookiecutter": {
+      "author_name": "mmz-001",
+      "author_email": "mmzappdev@gmail.com",
+      "project_name": "Streamlit Copy to Clipboard",
+      "package_name": "st-copy-to-clipboard",
+      "import_name": "st_copy_to_clipboard",
+      "description": "Streamlit component that allows you to copy text to clipboard.",
+      "deployment_via_github_actions": "y",
+      "working_with_dataframes": "n",
+      "open_source_license": "MIT license",
+      "_template": "https://github.com/blackary/cookiecutter-streamlit-component/"
+    }
+  },
+  "directory": null
+}

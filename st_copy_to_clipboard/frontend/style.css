@@ -1,0 +1,30 @@
+.st-copy-to-clipboard-btn {
+  display: inline-flex;
+  -moz-box-align: center;
+  align-items: center;
+  -moz-box-pack: center;
+  justify-content: center;
+  font-weight: 400;
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.5rem;
+  min-height: 38.4px;
+  margin: 0px;
+  line-height: 1.6;
+  color: inherit;
+  width: auto;
+  user-select: none;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgba(49, 51, 63, 0.2);
+  cursor: pointer;
+}
+
+.st-copy-to-clipboard-btn:hover {
+  border-color: rgb(255, 75, 75);
+  color: rgb(255, 75, 75);
+}
+
+.st-copy-to-clipboard-btn:active {
+  border-color: rgb(255, 75, 75);
+  background-color: rgb(255, 75, 75);
+  color: rgb(255, 255, 255);
+}
