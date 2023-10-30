@@ -2,7 +2,7 @@
 name = "st-copy-to-clipboard"
 version = "0.1.2"
 description = ""
-authors = ["mmz-001 mmzappdev@gmail.com"]
+authors = ["mmz-001 <mmzappdev@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 packages = [{include = "st_copy_to_clipboard"}]
