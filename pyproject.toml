@@ -1,11 +1,10 @@
 [tool.poetry]
 name = "st-copy-to-clipboard"
-version = "0.1.2"
+version = "0.1.4"
 description = ""
 authors = ["mmz-001 <mmzappdev@gmail.com>"]
 license = "MIT"
 readme = "README.md"
-packages = [{include = "st_copy_to_clipboard"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
