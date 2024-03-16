@@ -15,10 +15,21 @@ function sendValue(value) {
 function onRender(event) {
   // Only run the render code the first time the component is loaded.
   if (!window.rendered) {
-    const { text, before_copy_label, after_copy_label } = event.detail.args;
+    const { text, before_copy_label, after_copy_label, show_text } = event.detail.args;
 
+    const container = document.querySelector('#container');
     const button = document.querySelector('#copy-button');
+    const textElement = document.querySelector('#text-element');
+
     button.innerHTML = before_copy_label;  // Set initial label
+
+    // Show text if show_text is true
+    if (show_text) {
+      textElement.textContent = text;
+      textElement.style.display = 'inline';
+    } else {
+      textElement.style.display = 'none';
+    }
 
     function copyToClipboard() {
       navigator.clipboard.writeText(text);
@@ -32,6 +43,7 @@ function onRender(event) {
     }
 
     button.addEventListener('click', copyToClipboard);
+    textElement.addEventListener('click', copyToClipboard);
 
     window.rendered = true;
   }

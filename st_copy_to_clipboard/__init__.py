@@ -14,9 +14,10 @@ _component_func = components.declare_component(
 
 def st_copy_to_clipboard(
     text: str,
-    key: Optional[str] = None,
     before_copy_label: str = "📋",
     after_copy_label: str = "✅",
+    show_text: bool = False,
+    key: Optional[str] = None,
 ):
     """
     Streamlit component to copy text to clipboard.
@@ -25,18 +26,21 @@ def st_copy_to_clipboard(
     ----------
     text : str
         The text to be copied to the clipboard.
-    key : str or None
-        An optional key that uniquely identifies the component.
     before_copy_label : str
         Label of the button before text is copied.
     after_copy_label : str
         Label of the button after text is copied.
+    show_text: bool
+        If True, show text right before the button and make it clickable as well
+    key : str or None
+        An optional key that uniquely identifies the component.
     """
     component_value = _component_func(
         key=key,
         text=text,
         before_copy_label=before_copy_label,
         after_copy_label=after_copy_label,
+        show_text=show_text,
     )
 
     return component_value
@@ -47,6 +51,8 @@ def main():
     text = st.text_input("Enter text to copy to clipboard", value="Hello World")
     st_copy_to_clipboard(text)
     st_copy_to_clipboard(text, before_copy_label='📋Push to copy', after_copy_label='✅Text copied!')
+    st_copy_to_clipboard(text, before_copy_label='Push to copy', after_copy_label='Text copied!', show_text=True)
+
 
 
 
