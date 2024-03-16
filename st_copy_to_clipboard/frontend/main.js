@@ -15,29 +15,28 @@ function sendValue(value) {
 function onRender(event) {
   // Only run the render code the first time the component is loaded.
   if (!window.rendered) {
-    // You most likely want to get the data passed in like this
-    // const {input1, input2, input3} = event.detail.args
+    const { text, before_copy_label, after_copy_label } = event.detail.args;
 
-    const button = document.querySelector('#copy-button')
+    const button = document.querySelector('#copy-button');
+    button.innerHTML = before_copy_label;  // Set initial label
 
-    const textToCopy = event.detail.args.text
     function copyToClipboard() {
-      navigator.clipboard.writeText(textToCopy)
+      navigator.clipboard.writeText(text);
 
-      button.innerHTML = '✅'
+      button.innerHTML = after_copy_label;  // Change label after copying
 
       setTimeout(() => {
-        if (!button) return
-        button.innerHTML = '📋'
-      }, 1000)
+        if (!button) return;
+        button.innerHTML = before_copy_label;  // Revert to original label after 1 second
+      }, 1000);
     }
 
-    button.addEventListener('click', copyToClipboard)
+    button.addEventListener('click', copyToClipboard);
 
-    // You'll most likely want to pass some data back to Python like this
-    window.rendered = true
+    window.rendered = true;
   }
 }
+
 
 // Render the component whenever python send a "render event"
 Streamlit.events.addEventListener(Streamlit.RENDER_EVENT, onRender)

@@ -12,17 +12,31 @@ _component_func = components.declare_component(
 )
 
 
-# Create the python function that will be called
 def st_copy_to_clipboard(
     text: str,
     key: Optional[str] = None,
+    before_copy_label: str = "📋",
+    after_copy_label: str = "✅",
 ):
     """
-    Add a descriptive docstring
+    Streamlit component to copy text to clipboard.
+
+    Parameters
+    ----------
+    text : str
+        The text to be copied to the clipboard.
+    key : str or None
+        An optional key that uniquely identifies the component.
+    before_copy_label : str
+        Label of the button before text is copied.
+    after_copy_label : str
+        Label of the button after text is copied.
     """
     component_value = _component_func(
         key=key,
         text=text,
+        before_copy_label=before_copy_label,
+        after_copy_label=after_copy_label,
     )
 
     return component_value
@@ -32,6 +46,8 @@ def main():
     st.write("## Example")
     text = st.text_input("Enter text to copy to clipboard", value="Hello World")
     st_copy_to_clipboard(text)
+    st_copy_to_clipboard(text, before_copy_label='📋Push to copy', after_copy_label='✅Text copied!')
+
 
 
 if __name__ == "__main__":
