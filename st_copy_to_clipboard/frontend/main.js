@@ -15,29 +15,40 @@ function sendValue(value) {
 function onRender(event) {
   // Only run the render code the first time the component is loaded.
   if (!window.rendered) {
-    // You most likely want to get the data passed in like this
-    // const {input1, input2, input3} = event.detail.args
+    const { text, before_copy_label, after_copy_label, show_text } = event.detail.args;
 
-    const button = document.querySelector('#copy-button')
+    const container = document.querySelector('#container');
+    const button = document.querySelector('#copy-button');
+    const textElement = document.querySelector('#text-element');
 
-    const textToCopy = event.detail.args.text
-    function copyToClipboard() {
-      navigator.clipboard.writeText(textToCopy)
+    button.innerHTML = before_copy_label;  // Set initial label
 
-      button.innerHTML = '✅'
-
-      setTimeout(() => {
-        if (!button) return
-        button.innerHTML = '📋'
-      }, 1000)
+    // Show text if show_text is true
+    if (show_text) {
+      textElement.textContent = text;
+      textElement.style.display = 'inline';
+    } else {
+      textElement.style.display = 'none';
     }
 
-    button.addEventListener('click', copyToClipboard)
+    function copyToClipboard() {
+      navigator.clipboard.writeText(text);
 
-    // You'll most likely want to pass some data back to Python like this
-    window.rendered = true
+      button.innerHTML = after_copy_label;  // Change label after copying
+
+      setTimeout(() => {
+        if (!button) return;
+        button.innerHTML = before_copy_label;  // Revert to original label after 1 second
+      }, 1000);
+    }
+
+    button.addEventListener('click', copyToClipboard);
+    textElement.addEventListener('click', copyToClipboard);
+
+    window.rendered = true;
   }
 }
+
 
 // Render the component whenever python send a "render event"
 Streamlit.events.addEventListener(Streamlit.RENDER_EVENT, onRender)
