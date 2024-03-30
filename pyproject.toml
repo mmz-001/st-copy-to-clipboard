@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "st-copy-to-clipboard"
-version = "0.1.5"
+version = "0.1.6"
 description = ""
 authors = ["mmz-001 <mmzappdev@gmail.com>"]
 license = "MIT"
