@@ -7,7 +7,7 @@ long_description = (this_directory / "README.md").read_text()
 
 setuptools.setup(
     name="st-copy-to-clipboard",
-    version="0.1.4",
+    version="0.1.5",
     author="mmz-001",
     author_email="mmzappdev@gmail.com",
     description="Streamlit component that allows you to copy text to the clipboard.",
