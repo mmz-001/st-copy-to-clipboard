@@ -21,7 +21,7 @@ function onRender(event) {
     const button = document.querySelector('#copy-button');
     const textElement = document.querySelector('#text-element');
 
-    button.innerHTML = before_copy_label;  // Set initial label
+    button.textContent = before_copy_label;  // Set initial label
 
     // Show text if show_text is true
     if (show_text) {
@@ -34,11 +34,11 @@ function onRender(event) {
     function copyToClipboard() {
       navigator.clipboard.writeText(text);
 
-      button.innerHTML = after_copy_label;  // Change label after copying
+      button.textContent = after_copy_label;  // Change label after copying
 
       setTimeout(() => {
         if (!button) return;
-        button.innerHTML = before_copy_label;  // Revert to original label after 1 second
+        button.textContent = before_copy_label;  // Revert to original label after 1 second
       }, 1000);
     }
 
