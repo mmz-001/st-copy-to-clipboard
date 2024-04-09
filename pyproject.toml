@@ -9,9 +9,8 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.10"
 cruft = "^2.15.0"
-streamlit = "^1.28.0"
+streamlit = "<=1.32.0"
 twine = "^4.0.2"
-
 
 [build-system]
 requires = ["poetry-core"]
