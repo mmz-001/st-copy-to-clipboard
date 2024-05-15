@@ -13,6 +13,8 @@ function sendValue(value) {
  * component gets new data from Python.
  */
 function onRender(event) {
+  // Setting FrameHeight
+  Streamlit.setFrameHeight(100)
   // Only run the render code the first time the component is loaded.
   if (!window.rendered) {
     const { text, before_copy_label, after_copy_label, show_text } = event.detail.args;
