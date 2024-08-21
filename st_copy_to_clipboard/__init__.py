@@ -17,6 +17,7 @@ def st_copy_to_clipboard(
     before_copy_label: str = "📋",
     after_copy_label: str = "✅",
     show_text: bool = False,
+    tooltip: Optional[str] = None,
     key: Optional[str] = None,
 ):
     """
@@ -32,6 +33,8 @@ def st_copy_to_clipboard(
         Label of the button after text is copied.
     show_text: bool
         If True, show text right before the button and make it clickable as well
+    tooltip: str or None
+        An optional tooltip for the component.
     key : str or None
         An optional key that uniquely identifies the component.
     """
@@ -41,6 +44,7 @@ def st_copy_to_clipboard(
         before_copy_label=before_copy_label,
         after_copy_label=after_copy_label,
         show_text=show_text,
+        tooltip=tooltip
     )
 
     return component_value
@@ -52,6 +56,7 @@ def main():
     st_copy_to_clipboard(text)
     st_copy_to_clipboard(text, before_copy_label='📋Push to copy', after_copy_label='✅Text copied!')
     st_copy_to_clipboard(text, before_copy_label='Push to copy', after_copy_label='Text copied!', show_text=True)
+    st_copy_to_clipboard(text, before_copy_label='Push to copy', after_copy_label='Text copied!', show_text=True, tooltip="Show  tooltip on hover")
 
 
 
