@@ -4,7 +4,7 @@
 // means you're missing that file.
 
 function sendValue(value) {
-  Streamlit.setComponentValue(value)
+	Streamlit.setComponentValue(value);
 }
 
 /**
@@ -13,46 +13,49 @@ function sendValue(value) {
  * component gets new data from Python.
  */
 function onRender(event) {
-  // Only run the render code the first time the component is loaded.
-  if (!window.rendered) {
-    const { text, before_copy_label, after_copy_label, show_text } = event.detail.args;
+	// Only run the render code the first time the component is loaded.
+	if (!window.rendered) {
+		const { text, before_copy_label, after_copy_label, show_text, theme } = event.detail.args;
 
-    const container = document.querySelector('#container');
-    const button = document.querySelector('#copy-button');
-    const textElement = document.querySelector('#text-element');
+		const container = document.querySelector('#container');
+		const button = document.querySelector('#copy-button');
+		const textElement = document.querySelector('#text-element');
 
-    button.textContent = before_copy_label;  // Set initial label
+		if (theme == 'dark') {
+			button.style.border = '1px solid rgba(250, 250, 250, 0.2)';
+			button.style.color = 'white';
+		}
 
-    // Show text if show_text is true
-    if (show_text) {
-      textElement.textContent = text;
-      textElement.style.display = 'inline';
-    } else {
-      textElement.style.display = 'none';
-    }
+		button.textContent = before_copy_label; // Set initial label
 
-    function copyToClipboard() {
-      navigator.clipboard.writeText(text);
+		// Show text if show_text is true
+		if (show_text) {
+			textElement.textContent = text;
+			textElement.style.display = 'inline';
+		} else {
+			textElement.style.display = 'none';
+		}
 
-      button.textContent = after_copy_label;  // Change label after copying
+		function copyToClipboard() {
+			navigator.clipboard.writeText(text);
 
-      setTimeout(() => {
-        if (!button) return;
-        button.textContent = before_copy_label;  // Revert to original label after 1 second
-      }, 1000);
-    }
+			button.textContent = after_copy_label; // Change label after copying
 
-    button.addEventListener('click', copyToClipboard);
-    textElement.addEventListener('click', copyToClipboard);
+			setTimeout(() => {
+				if (!button) return;
+				button.textContent = before_copy_label; // Revert to original label after 1 second
+			}, 1000);
+		}
+		button.addEventListener('click', copyToClipboard);
+		textElement.addEventListener('click', copyToClipboard);
 
-    window.rendered = true;
-  }
+		window.rendered = true;
+	}
 }
 
-
 // Render the component whenever python send a "render event"
-Streamlit.events.addEventListener(Streamlit.RENDER_EVENT, onRender)
+Streamlit.events.addEventListener(Streamlit.RENDER_EVENT, onRender);
 // Tell Streamlit that the component is ready to receive events
-Streamlit.setComponentReady()
+Streamlit.setComponentReady();
 // Render with the correct height, if this is a fixed-height component
-Streamlit.setFrameHeight(100)
+Streamlit.setFrameHeight(100);

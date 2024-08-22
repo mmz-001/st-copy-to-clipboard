@@ -18,6 +18,8 @@ def st_copy_to_clipboard(
     after_copy_label: str = "✅",
     show_text: bool = False,
     key: Optional[str] = None,
+    theme: str = 'light', # default theme is 'light'
+    
 ):
     """
     Streamlit component to copy text to clipboard.
@@ -34,6 +36,8 @@ def st_copy_to_clipboard(
         If True, show text right before the button and make it clickable as well
     key : str or None
         An optional key that uniquely identifies the component.
+    theme: str
+        Set the current theme for the button.
     """
     component_value = _component_func(
         key=key,
@@ -41,6 +45,7 @@ def st_copy_to_clipboard(
         before_copy_label=before_copy_label,
         after_copy_label=after_copy_label,
         show_text=show_text,
+        theme=theme,
     )
 
     return component_value
@@ -52,6 +57,7 @@ def main():
     st_copy_to_clipboard(text)
     st_copy_to_clipboard(text, before_copy_label='📋Push to copy', after_copy_label='✅Text copied!')
     st_copy_to_clipboard(text, before_copy_label='Push to copy', after_copy_label='Text copied!', show_text=True)
+    st_copy_to_clipboard(text, before_copy_label='Push to copy', after_copy_label='copied!', show_text=True, theme="dark")
 
 
 
